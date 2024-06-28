@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "3447dedcdd8ad33e0061a90a8048bb32"
+name = "LM Theme Sections"
+handle = "lm-theme-sections"
+application_url = "https://undergraduate-seq-capital-personality.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "silver-ponies-home-test.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://undergraduate-seq-capital-personality.trycloudflare.com/auth/callback",
+  "https://undergraduate-seq-capital-personality.trycloudflare.com/auth/shopify/callback",
+  "https://undergraduate-seq-capital-personality.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
+
+[pos]
+embedded = false
