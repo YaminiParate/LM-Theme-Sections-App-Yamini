@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation, useSubmit } from "@remix-run/react";
-import { QuestionCircleIcon } from "@shopify/polaris-icons";
+import { ChartVerticalIcon } from "@shopify/polaris-icons";
 import {
   Page,
   Layout,
@@ -212,7 +212,7 @@ export default function Index() {
                 content: "Learn more",
                 onAction: () => {},
               }}
-              description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
+              description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.In this course, you’ll learn how the Kular family..`}
               popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
             >
               <VideoThumbnail
@@ -222,15 +222,16 @@ export default function Index() {
               />
             </MediaCard>
           </Layout.Section>
+
           <Layout.Section variant="oneThird">
-            <Card>
-              <Banner>
-                <Text as="h2" variant="headingMd">
-                  Help Center
-                </Text>
-              </Banner>
-
+            <BlockStack gap="500">
               <Card>
+                <Banner>
+                  <Text as="h2" variant="headingMd">
+                    Help Center
+                  </Text>
+                </Banner>
+                <Divider borderWidth="050" borderColor="transparent" />
                 <Text variant="bodyMd" as="p">
                   Add tags to your order.
                 </Text>
@@ -238,16 +239,18 @@ export default function Index() {
                   fulfilling orders
                 </Link>
               </Card>
-            </Card>
-
-            <Card>
-              <Banner>
-                <Text as="h2" variant="headingMd">
-                  Contact Support
-                </Text>
-              </Banner>
-
+            </BlockStack>
+            <Divider borderWidth="050" borderColor="transparent" />
+            <BlockStack gap="500">
               <Card>
+                <Banner>
+                  <Text as="h2" variant="headingMd">
+                    Contact Support
+                  </Text>
+                </Banner>
+
+                <Divider borderWidth="050" borderColor="transparent" />
+
                 <Text variant="bodyMd" as="p">
                   Add tags to your order.
                 </Text>
@@ -255,7 +258,7 @@ export default function Index() {
                   fulfilling orders
                 </Link>
               </Card>
-            </Card>
+            </BlockStack>
           </Layout.Section>
         </Layout>
 
@@ -286,9 +289,21 @@ export default function Index() {
             <Card>
               <BlockStack gap="500">
                 <BlockStack gap="200">
-                  <Text as="h2" variant="headingMd">
-                    Overview
-                  </Text>
+                  <div
+                    style={{
+                      background: "#eaf4ff",
+                      padding: "10px",
+                    }}
+                  >
+                    <InlineStack wrap={false}>
+                      <Text as="h2">
+                        <Icon source={ChartVerticalIcon} tone="success" />
+                      </Text>
+                      <Text as="h2" variant="headingMd" tone="success">
+                        Overview
+                      </Text>
+                    </InlineStack>
+                  </div>
                   <Text variant="bodyMd" as="p">
                     Statistics of layouts you have installed
                   </Text>

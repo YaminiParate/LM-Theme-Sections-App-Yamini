@@ -3,7 +3,7 @@
 client_id = "3447dedcdd8ad33e0061a90a8048bb32"
 name = "LM Theme Sections"
 handle = "lm-theme-sections"
-application_url = "https://undergraduate-seq-capital-personality.trycloudflare.com"
+application_url = "https://bt-ae-precise-helen.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://undergraduate-seq-capital-personality.trycloudflare.com/auth/callback",
-  "https://undergraduate-seq-capital-personality.trycloudflare.com/auth/shopify/callback",
-  "https://undergraduate-seq-capital-personality.trycloudflare.com/api/auth/callback"
+  "https://bt-ae-precise-helen.trycloudflare.com/auth/callback",
+  "https://bt-ae-precise-helen.trycloudflare.com/auth/shopify/callback",
+  "https://bt-ae-precise-helen.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

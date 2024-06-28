@@ -7,77 +7,72 @@ import {
   Page,
   Text,
   BlockStack,
+  LegacyCard,
+  Tabs,
+  Grid,
+  InlineGrid,
+  Badge,
+  InlineStack,
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
+import { useCallback, useState } from "react";
+import { tabs, imageGrids } from "./data/explore-sections-data"; // Importing the data
 
 export default function AdditionalPage() {
-  return (
-    <Page>
-      <TitleBar title="Explore Sections" />
-      <Layout>
-        <Layout.Section>
-          <Card>
-            <BlockStack gap="300">
-              <Text as="p" variant="bodyMd">
-                The app template comes with an additional page which
-                demonstrates how to create multiple pages within app navigation
-                using{" "}
-                <Link
-                  url="https://shopify.dev/docs/apps/tools/app-bridge"
-                  target="_blank"
-                  removeUnderline
-                >
-                  App Bridge
-                </Link>
-                .
-              </Text>
-              <Text as="p" variant="bodyMd">
-                To create your own page and have it show up in the app
-                navigation, add a page inside <Code>app/routes</Code>, and a
-                link to it in the <Code>&lt;NavMenu&gt;</Code> component found
-                in <Code>app/routes/app.jsx</Code>.
-              </Text>
-            </BlockStack>
-          </Card>
-        </Layout.Section>
-        <Layout.Section variant="oneThird">
-          <Card>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingMd">
-                Resources
-              </Text>
-              <List>
-                <List.Item>
-                  <Link
-                    url="https://shopify.dev/docs/apps/design-guidelines/navigation#app-nav"
-                    target="_blank"
-                    removeUnderline
-                  >
-                    App nav best practices
-                  </Link>
-                </List.Item>
-              </List>
-            </BlockStack>
-          </Card>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-}
+  const [selected, setSelected] = useState(0);
 
-function Code({ children }) {
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
   return (
-    <Box
-      as="span"
-      padding="025"
-      paddingInlineStart="100"
-      paddingInlineEnd="100"
-      background="bg-surface-active"
-      borderWidth="025"
-      borderColor="border"
-      borderRadius="100"
-    >
-      <code>{children}</code>
-    </Box>
+    <Page fullWidth>
+      <BlockStack gap="500">
+        <Text variant="headingLg" as="h5">
+          Explore Sections
+        </Text>
+
+        <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+          <LegacyCard.Section title={tabs[selected].content}>
+            <Grid>
+              {imageGrids[selected].map((gridItem, index) => (
+                <Grid.Cell
+                  key={index}
+                  columnSpan={{ xs: 3, sm: 3, md: 3, lg: 4, xl: 4 }}
+                >
+                  <Card>
+                    <InlineStack gap="200" wrap={false}>
+                      <Text variant="headingMd" as="h5">
+                        {gridItem.title}
+                      </Text>
+                      {gridItem.badgeTone && gridItem.badgeProgress && (
+                        <Badge
+                          tone={gridItem.badgeTone}
+                          progress={gridItem.badgeProgress}
+                        >
+                          {gridItem.badgeTone === "success" ? "Unlock" : "Lock"}
+                        </Badge>
+                      )}
+                    </InlineStack>
+
+                    <img
+                      alt=""
+                      width="100%"
+                      height="100%"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                      src={gridItem.imgSrc}
+                    />
+                  </Card>
+                </Grid.Cell>
+              ))}
+            </Grid>
+          </LegacyCard.Section>
+        </Tabs>
+      </BlockStack>
+    </Page>
   );
 }
