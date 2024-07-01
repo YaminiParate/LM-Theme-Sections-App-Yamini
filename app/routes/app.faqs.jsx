@@ -1,83 +1,70 @@
+import React, { useState, useCallback } from "react";
 import {
-  Box,
-  Card,
-  Layout,
+  Collapsible,
   Link,
-  List,
   Page,
+  Box,
   Text,
+  Card,
   BlockStack,
+  InlineGrid,
 } from "@shopify/polaris";
-import { TitleBar } from "@shopify/app-bridge-react";
+import { faqItems } from "./data/faqs-data"; // Importing the data
 
-export default function AdditionalPage() {
+const FAQPage = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleToggle = useCallback(
+    (index) => {
+      setOpenIndex(openIndex === index ? null : index);
+    },
+    [openIndex],
+  );
+
   return (
     <Page>
-      <TitleBar title="FAQs" />
-      <Layout>
-        <Layout.Section>
-          <Card>
+      {/* Display Page Title */}
+      <Box padding="200">
+        <Text variant="headingLg" as="h5">
+          FAQs
+        </Text>
+        <Text variant="bodyMd" as="p">
+          Bundles lets you buy multiple sections at a discounted price.
+        </Text>
+      </Box>
+
+      {/* Shows List of FAQs */}
+      {faqItems.map((item, index) => (
+        <Box padding="200">
+          <Card key={index}>
             <BlockStack gap="300">
-              <Text as="p" variant="bodyMd">
-                The app template comes with an additional page which
-                demonstrates how to create multiple pages within app navigation
-                using{" "}
-                <Link
-                  url="https://shopify.dev/docs/apps/tools/app-bridge"
-                  target="_blank"
-                  removeUnderline
-                >
-                  App Bridge
+              <InlineGrid columns="1fr auto">
+                <Text variant="headingSm" as="h5">
+                  {item.question}
+                </Text>
+                <Link onClick={() => handleToggle(index)}>
+                  {openIndex === index ? "Hide" : "Show"}
                 </Link>
-                .
-              </Text>
-              <Text as="p" variant="bodyMd">
-                To create your own page and have it show up in the app
-                navigation, add a page inside <Code>app/routes</Code>, and a
-                link to it in the <Code>&lt;NavMenu&gt;</Code> component found
-                in <Code>app/routes/app.jsx</Code>.
-              </Text>
+              </InlineGrid>
             </BlockStack>
-          </Card>
-        </Layout.Section>
-        <Layout.Section variant="oneThird">
-          <Card>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingMd">
-                Resources
+            <Collapsible
+              open={openIndex === index}
+              id={`faq-collapsible-${index}`}
+              transition={{
+                duration: "500ms",
+                timingFunction: "ease-in-out",
+              }}
+              expandOnPrint
+            >
+              <Text variant="bodyMd" as="p">
+                {item.answer}
               </Text>
-              <List>
-                <List.Item>
-                  <Link
-                    url="https://shopify.dev/docs/apps/design-guidelines/navigation#app-nav"
-                    target="_blank"
-                    removeUnderline
-                  >
-                    App nav best practices
-                  </Link>
-                </List.Item>
-              </List>
-            </BlockStack>
+            </Collapsible>
           </Card>
-        </Layout.Section>
-      </Layout>
+        </Box>
+      ))}
     </Page>
   );
-}
+};
 
-function Code({ children }) {
-  return (
-    <Box
-      as="span"
-      padding="025"
-      paddingInlineStart="100"
-      paddingInlineEnd="100"
-      background="bg-surface-active"
-      borderWidth="025"
-      borderColor="border"
-      borderRadius="100"
-    >
-      <code>{children}</code>
-    </Box>
-  );
-}
+export default FAQPage;

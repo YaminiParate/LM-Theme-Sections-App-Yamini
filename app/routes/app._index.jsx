@@ -108,7 +108,7 @@ export default function Index() {
   const submit = useSubmit();
   const shopify = useAppBridge();
 
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   const toggleModal = useCallback(() => setActive((active) => !active), []);
 
@@ -276,7 +276,9 @@ export default function Index() {
                   heading="No layouts installed"
                   image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
                 >
-                  <p>View the library to add layouts to your theme</p>
+                  <Text variant="bodyMd" as="p">
+                    View the library to add layouts to your theme
+                  </Text>
                 </EmptyState>
               </BlockStack>
             </Card>
