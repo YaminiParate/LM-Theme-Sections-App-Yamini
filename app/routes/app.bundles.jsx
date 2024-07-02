@@ -8,10 +8,18 @@ import {
   Image,
   InlineGrid,
 } from "@shopify/polaris";
-import { Link } from "@remix-run/react";
+import { useNavigate } from "@remix-run/react";
 import { bundles } from "./data/bundles-data";
 
 export default function Bundles() {
+  const navigate = useNavigate(); // Get the navigate function from Remix
+
+  // Function to handle the manage button click
+  const handleManageClick = (bundleId) => {
+    // Use navigate function to change the route programmatically
+    navigate(`/app/bundleDetail/${bundleId}`);
+  };
+
   return (
     <Page>
       {/* Page Title  */}
@@ -27,29 +35,28 @@ export default function Bundles() {
         <Layout.Section>
           {/* Show bundles sections */}
           <Grid>
-            {bundles.map((bundle, index) => (
+            {bundles.map((bundle) => (
               <Grid.Cell
-                key={index}
+                key={bundle.id}
                 columnSpan={{ xs: 4, sm: 3, md: 3, lg: 4, xl: 4 }}
               >
-                <Link to={`/app/bundles/${index}`}>
-                  <Card roundedAbove="xl">
-                    <Image
-                      width="100%"
-                      height="100%"
-                      alt="bundleImage"
-                      source={bundle.imgSrc}
-                    />
-                    <InlineGrid columns="1fr auto">
-                      <Text as="p" variant="bodyMd">
-                        {bundle.title}
-                      </Text>
-                      <Text as="p" variant="bodyMd">
-                        {bundle.price}
-                      </Text>
-                    </InlineGrid>
-                  </Card>
-                </Link>
+                <Card roundedAbove="xl">
+                  <Image
+                    width="100%"
+                    height="100%"
+                    alt="bundleImage"
+                    source={bundle.imgSrc}
+                    onClick={() => handleManageClick(bundle.id)}
+                  />
+                  <InlineGrid columns="1fr auto">
+                    <Text as="p" variant="bodyMd">
+                      {bundle.title}
+                    </Text>
+                    <Text as="p" variant="bodyMd">
+                      {bundle.price}
+                    </Text>
+                  </InlineGrid>
+                </Card>
               </Grid.Cell>
             ))}
           </Grid>

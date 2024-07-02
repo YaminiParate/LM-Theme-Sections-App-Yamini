@@ -1,83 +1,69 @@
+import React, { useCallback, useState } from "react";
 import {
   Box,
   Card,
-  Layout,
-  Link,
-  List,
   Page,
   Text,
   BlockStack,
+  Tabs,
+  Grid,
+  Button,
+  Image,
 } from "@shopify/polaris";
-import { TitleBar } from "@shopify/app-bridge-react";
+import { tabs, imageGrids } from "./data/explore-sections-data"; // Importing the data
 
-export default function AdditionalPage() {
+export default function MySections() {
+  const [selected, setSelected] = useState(0);
+
+  // Handle event for Tabs
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+
+  // Flatten the imageGrids array
+  const flattenedImageGrids = imageGrids.flat();
+
+  // Filtered grids based on selected tab
+  const filteredImageGrids =
+    selected === 0
+      ? flattenedImageGrids // Show all for "All" tab
+      : flattenedImageGrids.filter(
+          (gridItem) => gridItem.categoryId === tabs[selected].category,
+        );
+
   return (
     <Page>
-      <TitleBar title="My Sections" />
-      <Layout>
-        <Layout.Section>
-          <Card>
-            <BlockStack gap="300">
-              <Text as="p" variant="bodyMd">
-                The app template comes with an additional page which
-                demonstrates how to create multiple pages within app navigation
-                using{" "}
-                <Link
-                  url="https://shopify.dev/docs/apps/tools/app-bridge"
-                  target="_blank"
-                  removeUnderline
-                >
-                  App Bridge
-                </Link>
-                .
-              </Text>
-              <Text as="p" variant="bodyMd">
-                To create your own page and have it show up in the app
-                navigation, add a page inside <Code>app/routes</Code>, and a
-                link to it in the <Code>&lt;NavMenu&gt;</Code> component found
-                in <Code>app/routes/app.jsx</Code>.
-              </Text>
-            </BlockStack>
-          </Card>
-        </Layout.Section>
-        <Layout.Section variant="oneThird">
-          <Card>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingMd">
-                Resources
-              </Text>
-              <List>
-                <List.Item>
-                  <Link
-                    url="https://shopify.dev/docs/apps/design-guidelines/navigation#app-nav"
-                    target="_blank"
-                    removeUnderline
-                  >
-                    App nav best practices
-                  </Link>
-                </List.Item>
-              </List>
-            </BlockStack>
-          </Card>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-}
+      <BlockStack gap="500">
+        {/* Show Page Title */}
+        <Text variant="headingLg" as="h5">
+          My Sections
+        </Text>
 
-function Code({ children }) {
-  return (
-    <Box
-      as="span"
-      padding="025"
-      paddingInlineStart="100"
-      paddingInlineEnd="100"
-      background="bg-surface-active"
-      borderWidth="025"
-      borderColor="border"
-      borderRadius="100"
-    >
-      <code>{children}</code>
-    </Box>
+        {/* Listing of Tabs */}
+        <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} />
+
+        <BlockStack gap="300">
+          <Grid columns={{ sm: 1, md: 2, lg: 3 }} gap="300">
+            {filteredImageGrids.map((gridItem, index) => (
+              <Card key={index} sectioned>
+                <BlockStack gap="200">
+                  <Image
+                    alt={gridItem.title}
+                    source={gridItem.imgSrc}
+                    fit="cover"
+                    style={{ height: "200px" }}
+                  />
+                  <Text variant="headingSm" as="h6">
+                    {gridItem.title}
+                  </Text>
+                  <Button fullWidth>Try Section</Button>
+                </BlockStack>
+              </Card>
+            ))}
+          </Grid>
+        </BlockStack>
+      </BlockStack>
+    </Page>
   );
 }

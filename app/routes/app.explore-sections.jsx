@@ -34,6 +34,7 @@ export default function ExploreSections() {
   const [modalContent, setModalContent] = useState({
     title: "",
     imgSrc: "",
+    price: "",
     details: [],
   });
 
@@ -58,8 +59,19 @@ export default function ExploreSections() {
     [handleShowTemplateModal],
   );
 
+    // Flatten the imageGrids array
+    const flattenedImageGrids = imageGrids.flat();
+
+    // Filtered grids based on selected tab
+    const filteredImageGrids =
+      selected === 0
+        ? flattenedImageGrids // Show all for "All" tab
+        : flattenedImageGrids.filter(
+            (gridItem) => gridItem.categoryId === tabs[selected].category,
+          );
+
   return (
-    <Page fullWidth>
+    <Page>
       <BlockStack gap="500">
         {/* Show Page Title */}
         <Text variant="headingLg" as="h5">
@@ -71,10 +83,10 @@ export default function ExploreSections() {
           {/* Shows Various List Templates */}
           <LegacyCard.Section title={tabs[selected].content}>
             <Grid>
-              {imageGrids[selected].map((gridItem, index) => (
+              {filteredImageGrids.map((gridItem, index) => (
                 <Grid.Cell
                   key={index}
-                  columnSpan={{ xs: 3, sm: 3, md: 3, lg: 4, xl: 4 }}
+                  columnSpan={{ xs: 3, sm: 3, md: 3, lg: 4, xl: 6 }}
                 >
                   <Card>
                     <InlineStack gap="200" wrap={false}>
@@ -167,7 +179,7 @@ export default function ExploreSections() {
                           {modalContent.title}
                         </Text>
                         <Text variant="headingMd" as="h5">
-                          $9
+                          {modalContent.price}
                         </Text>
                       </InlineGrid>
                     </BlockStack>
