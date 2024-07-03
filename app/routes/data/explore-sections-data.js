@@ -31,6 +31,7 @@ export const tabs = [
 export const imageGrids = [
   [
     {
+      sectionId: "01",
       title: "Sales",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -62,6 +63,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "02",
       title: "Sales",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -83,6 +85,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "03",
       title: "Sales 2",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -109,6 +112,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "04",
       title: "Sales three",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -130,6 +134,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "05",
       title: "Sales Four",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -153,6 +158,7 @@ export const imageGrids = [
   ],
   [
     {
+      sectionId: "06",
       title: "Order",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -174,6 +180,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "07",
       title: "Sales",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -195,6 +202,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "08",
       title: "Sales",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -218,6 +226,7 @@ export const imageGrids = [
   ],
   [
     {
+      sectionId: "09",
       title: "Order 2",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -239,6 +248,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "10",
       title: "Sales 4",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -260,6 +270,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "11",
       title: "Sales 5",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -281,6 +292,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "12",
       title: "Orders 2",
       price: "$32",
       bundleId: "04",
@@ -302,6 +314,7 @@ export const imageGrids = [
   ],
   [
     {
+      sectionId: "13",
       title: "Order 3",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -323,6 +336,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "14",
       title: "Sales 6",
       badgeTone: "success",
       badgeProgress: "complete",
@@ -344,6 +358,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "15",
       title: "Sales 7",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -365,6 +380,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "16",
       title: "Orders 3",
       price: "$90",
       bundleId: "06",
@@ -384,6 +400,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "17",
       title: "Sales 5",
       badgeTone: "warning",
       badgeProgress: "incomplete",
@@ -405,6 +422,7 @@ export const imageGrids = [
       ],
     },
     {
+      sectionId: "18",
       title: "Order 2",
       badgeTone: "success",
       badgeProgress: "complete",

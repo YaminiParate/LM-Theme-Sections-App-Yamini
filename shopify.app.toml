@@ -3,7 +3,7 @@
 client_id = "3447dedcdd8ad33e0061a90a8048bb32"
 name = "LM Theme Sections"
 handle = "lm-theme-sections"
-application_url = "https://trauma-showing-biotechnology-var.trycloudflare.com"
+application_url = "https://certainly-canyon-deluxe-switch.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://trauma-showing-biotechnology-var.trycloudflare.com/auth/callback",
-  "https://trauma-showing-biotechnology-var.trycloudflare.com/auth/shopify/callback",
-  "https://trauma-showing-biotechnology-var.trycloudflare.com/api/auth/callback"
+  "https://certainly-canyon-deluxe-switch.trycloudflare.com/auth/callback",
+  "https://certainly-canyon-deluxe-switch.trycloudflare.com/auth/shopify/callback",
+  "https://certainly-canyon-deluxe-switch.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

@@ -1,0 +1,39 @@
+
+
+  .image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .grid-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(230, 220, 220, 0.637);
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom */
+    justify-content: flex-end; /* Align items to the right */
+    padding: 10px; /* Add some padding to avoid the icon sticking to the edge */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .image-container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay .Polaris-Icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  
