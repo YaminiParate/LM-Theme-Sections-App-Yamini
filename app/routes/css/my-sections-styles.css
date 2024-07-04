@@ -20,11 +20,12 @@
     height: 100%;
     background-color:rgba(230, 220, 220, 0.637);
     display: flex;
-    align-items: flex-end; /* Align items to the bottom */
-    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Align items to the bottom */
+    justify-content: center; /* Align items to the right */
     padding: 10px; /* Add some padding to avoid the icon sticking to the edge */
     opacity: 0;
     transition: opacity 0.3s;
+    cursor: pointer;;
   }
   
   .image-container:hover .overlay {
@@ -32,8 +33,16 @@
   }
   
   .overlay .Polaris-Icon {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
   }
+
+  .Polaris-Tabs__NewTab{
+    display: none;
+  }
+
+  button.Polaris-Button.Polaris-Button--pressable.Polaris-Button--variantSecondary.Polaris-Button--sizeMicro.Polaris-Button--textAlignCenter {
+    display: none;
+}
   
   

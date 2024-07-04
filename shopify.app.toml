@@ -3,7 +3,7 @@
 client_id = "3447dedcdd8ad33e0061a90a8048bb32"
 name = "LM Theme Sections"
 handle = "lm-theme-sections"
-application_url = "https://certainly-canyon-deluxe-switch.trycloudflare.com"
+application_url = "https://start-economic-donna-notification.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://certainly-canyon-deluxe-switch.trycloudflare.com/auth/callback",
-  "https://certainly-canyon-deluxe-switch.trycloudflare.com/auth/shopify/callback",
-  "https://certainly-canyon-deluxe-switch.trycloudflare.com/api/auth/callback"
+  "https://start-economic-donna-notification.trycloudflare.com/auth/callback",
+  "https://start-economic-donna-notification.trycloudflare.com/auth/shopify/callback",
+  "https://start-economic-donna-notification.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
