@@ -143,7 +143,9 @@
    .lm-faq-col [data-active="true"]{
     padding-bottom: 10px;
     }
-
+    .lm-right{
+      flex-direction: row-reverse;
+    }
 
     @media only screen and (max-width: 800px) {
     .lm_faq_heading{
@@ -170,13 +172,12 @@
 {% comment %}Faq Start {% endcomment %}
 <div id="lm-faq-{{ section.id }}" class="lm-faq-wrap" lm-wrap>
   <div class="lm-faq" lm-container>
-    <div class="lm-faq-grid">
+    <div class="lm-faq-grid lm-{{ section.settings.image_position }}">
       {%- if section.settings.image != blank -%}
         <div class="lm-faq-image">
           <img src="{{ section.settings.image  | img_url: 'large'}}" alt="" h>
         </div>
       {%- endif -%}
-
       <div class="lm-faq-col" lm-column>
         <h2 class="lm_faq_heading">{{ section.settings.heading }}</h2>
         {% for block in section.blocks %}
@@ -230,6 +231,22 @@
       "type": "image_picker",
       "id": "image",
       "label": "Add Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
     },
     {
       "type": "header",
