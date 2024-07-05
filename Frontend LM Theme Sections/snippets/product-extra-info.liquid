@@ -1,0 +1,85 @@
+<div class="product_extra_info_block">
+  {%- if block.settings.show_hide -%}
+    <div class="collection--description">
+      {% comment %} desktop {% endcomment %}
+      {% capture readmore_desktop %}
+        {%- assign value_Desk = block.settings.text_turncate_desk -%}
+            <div id="truncated">{{ block.settings.extra_info_text | truncate: value_Desk, "... <a class='read-more-collection' data-no-instant>Read More</a>" }}</div>
+            <div id="fullDescription" style="display: none">{{ block.settings.extra_info_text | append: " <a class='read-more-collection' data-no-instant>Read Less</a>" }}</div>
+        {% endcapture %}
+
+      {% comment %} mobile {% endcomment %}
+      {% capture readmore_mobile %}
+        {%- assign value_mobile = block.settings.text_turncate_mobile -%}
+            <div id="truncated_mobile">{{ block.settings.extra_info_text | truncate: value_mobile, "... <a class='read-more-collection_mobile' data-no-instant>Read More</a>" }}</div>
+            <div id="fullDescription_mobile" style="display: none">{{ block.settings.extra_info_text | append: " <a class='read-more-collection_mobile' data-no-instant>Read Less</a>" }}</div>
+        {% endcapture %}
+
+      <div class="desktop_content">{{ readmore_desktop }}</div>
+      <div class="mobile_content">{{ readmore_mobile }}</div>
+    </div>
+  {%- else -%}
+    <div class="fullDescriptions">{{ block.settings.extra_info_text }}</div>
+  {%- endif -%}
+</div>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+    //DESKTOP SCRIPT
+    document.querySelectorAll('.read-more-collection').forEach(function (element) {
+      element.addEventListener('click', function () {
+        var truncated = document.getElementById('truncated');
+        var fullDescription = document.getElementById('fullDescription');
+
+        if (truncated.style.display === 'none') {
+          truncated.style.display = 'block';
+          fullDescription.style.display = 'none';
+        } else {
+          truncated.style.display = 'none';
+          fullDescription.style.display = 'block';
+        }
+      });
+    });
+    // MOBILE SCRIPT
+    document.querySelectorAll('.read-more-collection_mobile').forEach(function (element) {
+        element.addEventListener('click', function () {
+          var truncated_mobile = document.getElementById('truncated_mobile');
+          var fullDescription_mobile = document.getElementById('fullDescription_mobile');
+
+          if (truncated_mobile.style.display === 'none') {
+            truncated_mobile.style.display = 'block';
+            fullDescription_mobile.style.display = 'none';
+          } else {
+            truncated_mobile.style.display = 'none';
+            fullDescription_mobile.style.display = 'block';
+          }
+        });
+      });
+
+  });
+</script>
+
+<style>
+  .product_extra_info_block p {
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  .read-more-collection,
+  .read-more-collection_mobile {
+    text-decoration: none;
+    color: red;
+    cursor: pointer !important;
+  }
+  .mobile_content {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .mobile_content {
+      display: block;
+    }
+
+    .desktop_content {
+      display: none;
+    }
+  }
+</style>
