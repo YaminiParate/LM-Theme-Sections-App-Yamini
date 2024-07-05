@@ -1,5 +1,5 @@
 {% comment %} StyleSheet {% endcomment %}
-{%- stylesheet -%}
+<style>
    {{ section.settings.font | font_face }}
     {{ section.settings.font | font_modify: 'weight', 'bolder' | font_face }}
 
@@ -107,7 +107,8 @@
     {%- if section.settings.css != blank -%}
     {{ section.settings.css }}
     {% endif %}
-{%- endstylesheet -%}
+
+</style>
 {% comment %} end stylesheet {% endcomment %}
 
 {% comment %} Start Template {% endcomment %}
@@ -306,7 +307,7 @@
           "label": "Right"
         }
       ],
-      "default": "left"
+      "default": "center"
     },
     {
       "type": "text",
