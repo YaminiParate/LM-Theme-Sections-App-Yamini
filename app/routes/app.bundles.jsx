@@ -9,11 +9,26 @@ import {
   Icon,
   InlineGrid,
 } from "@shopify/polaris";
-import { useNavigate } from "@remix-run/react";
-import { bundles } from "./data/bundles-data";
+import { json, useLoaderData, useNavigate } from "@remix-run/react";
+// import { bundles } from "./data/bundles-data";
 import styles from "./css/bundles.module.css"; // Import custom CSS module
+import db from "../db.server";
+
+export const loader = async () => {
+  try {
+    const bundles = await db.bundle.findMany();
+    if (bundles.length === 0) {
+      throw new Response("No bundles found", { status: 404 });
+    }
+    return json(bundles);
+  } catch (error) {
+    console.error("Error fetching bundles:", error);
+    throw new Error("Failed to fetch bundles data");
+  }
+};
 
 export default function Bundles() {
+  const bundles = useLoaderData();
   const navigate = useNavigate(); // Get the navigate function from Remix
 
   // Function to handle the manage button click
@@ -67,12 +82,12 @@ export default function Bundles() {
                           onClick={() => handleManageClick(bundle.id)}
                         />
                         <Box padding="4">
-                          <InlineStack columns="1fr auto">
+                          <InlineStack align="space-between">
                             <Text as="p" variant="bodyMd">
                               {bundle.title}
                             </Text>
-                            <Text as="p" variant="bodyMd">
-                              {bundle.price}
+                            <Text as="p" variant="bodyMd" fontWeight="bold">
+                              ${bundle.price}
                             </Text>
                           </InlineStack>
                         </Box>
