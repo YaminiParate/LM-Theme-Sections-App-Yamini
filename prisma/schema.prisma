@@ -32,3 +32,10 @@ model Session {
   emailVerified Boolean?  @default(false)
 }
 
+model faqs {
+  id        Int       @id @default(autoincrement())
+  question  String?
+  answer    String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
