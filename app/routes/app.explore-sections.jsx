@@ -75,7 +75,6 @@ export default function ExploreSections() {
     <Page fullWidth>
       <BlockStack gap="500">
         {/* Show Page Title */}
-        {/* <Text variant="headingLg" as="h5"></Text> */}
 
         <InlineStack>
           <Box width="50px">

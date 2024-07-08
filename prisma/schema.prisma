@@ -32,3 +32,11 @@ model Session {
   emailVerified Boolean?  @default(false)
 }
 
+model section_inspiration {
+  id        Int       @id @default(autoincrement())
+  shop      String?
+  title     String?
+  imgSrc    String?
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+}

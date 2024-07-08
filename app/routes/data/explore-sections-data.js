@@ -443,5 +443,93 @@ export const imageGrids = [
         },
       ],
     },
+    {
+      sectionId: "19",
+      title: "Order 12",
+      badgeTone: "success",
+      badgeProgress: "complete",
+      price: "$68",
+      bundleId: "10",
+      categoryId: "03",
+      imgSrc: "https://sections.puco.io/images/preview/image.b0342825.webp",
+      details: [
+        {
+          title: "Title 1",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+        {
+          title: "Title 2",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+      ],
+    },
+    {
+      sectionId: "20",
+      title: "Order 52",
+      badgeTone: "success",
+      badgeProgress: "complete",
+      price: "$68",
+      bundleId: "10",
+      categoryId: "03",
+      imgSrc: "https://sections.puco.io/images/preview/image.b0342825.webp",
+      details: [
+        {
+          title: "Title 1",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+        {
+          title: "Title 2",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+      ],
+    },
+    {
+      sectionId: "21",
+      title: "Order 32",
+      badgeTone: "success",
+      badgeProgress: "complete",
+      price: "$68",
+      bundleId: "10",
+      categoryId: "03",
+      imgSrc: "https://sections.puco.io/images/preview/image.b0342825.webp",
+      details: [
+        {
+          title: "Title 1",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+        {
+          title: "Title 2",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+      ],
+    },
+    {
+      sectionId: "22",
+      title: "Title Test",
+      badgeTone: "success",
+      badgeProgress: "complete",
+      price: "$68",
+      bundleId: "10",
+      categoryId: "03",
+      imgSrc: "https://sections.puco.io/images/preview/image.b0342825.webp",
+      details: [
+        {
+          title: "Title 1",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+        {
+          title: "Title 2",
+          description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+      ],
+    },
   ],
 ];

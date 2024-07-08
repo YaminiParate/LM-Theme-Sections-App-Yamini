@@ -24,6 +24,7 @@ export default function Bundles() {
 
   return (
     <Page>
+      {/* Page Title */}
       <Box padding="200">
         <InlineStack>
           <Box width="50px">
@@ -40,6 +41,7 @@ export default function Bundles() {
         </InlineStack>
       </Box>
 
+      {/* List Of Bundles in Grid View */}
       <Layout>
         <Layout.Section>
           <div className={styles.gridContainer}>

@@ -1,30 +1,24 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Card,
   Page,
   Text,
   BlockStack,
-  Tabs,
   Grid,
   Button,
   Image,
   Icon,
-  Autocomplete,
-  InlineGrid,
-  Divider,
   IndexFilters,
   ChoiceList,
   TextField,
   RangeSlider,
   useSetIndexFiltersMode,
-  Label,
   Box,
   InlineStack,
+  Pagination,
 } from "@shopify/polaris";
 import "./css/my-sections-styles.css";
 import { useNavigate } from "@remix-run/react";
-import { SearchIcon } from "@shopify/polaris-icons";
-
 import { tabs, imageGrids } from "./data/explore-sections-data"; // Importing the data
 
 export default function MySections() {
@@ -33,6 +27,8 @@ export default function MySections() {
   const navigate = useNavigate(); // Get the navigate function from Remix.
   const [taggedWith, setTaggedWith] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const itemsPerPage = 9; // Items per page
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -44,13 +40,14 @@ export default function MySections() {
   };
 
   // Handle event for Tabs
-  const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
-  );
+  const handleTabChange = useCallback((selectedTabIndex) => {
+    setSelected(selectedTabIndex);
+    setCurrentPage(1); // Reset to first page on tab change
+  }, []);
 
   const handleSearchChange = useCallback((value) => {
     setSearchQuery(value);
+    setCurrentPage(1); // Reset to first page on search change
   }, []);
 
   const sortOptions = [
@@ -74,7 +71,6 @@ export default function MySections() {
   const [queryValue, setQueryValue] = useState("");
 
   const [accountStatus, setAccountStatus] = useState(undefined);
-
   const [moneySpent, setMoneySpent] = useState(undefined);
 
   const { mode, setMode } = useSetIndexFiltersMode();
@@ -169,32 +165,6 @@ export default function MySections() {
     }
   }
 
-  const appliedFilters = [];
-  if (accountStatus && !isEmpty(accountStatus)) {
-    const key = "accountStatus";
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (moneySpent) {
-    const key = "moneySpent";
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = "taggedWith";
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
   const handleAccountStatusRemove = useCallback(
     () => setAccountStatus(undefined),
     [],
@@ -231,6 +201,18 @@ export default function MySections() {
             gridItem.title.toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
+  console.log("Filtered Image Grids:", filteredImageGrids); // Debug filtered data
+
+  // Implement pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredImageGrids.slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
+
+  console.log("Current Items:", currentItems); // Debug paginated data
+
   const rightArrow = () => {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -247,8 +229,6 @@ export default function MySections() {
   return (
     <Page>
       <BlockStack gap="500">
-        {/* Show Page Title */}
-
         <InlineStack>
           <Box width="50px">
             <Icon source='<svg height="150px" id="Capa_1" style="enable-background:new 0 0 70 50;" version="1.1" viewBox="0 0 70 50" width="100px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M10,40H5c-2.762,0-5,2.238-5,5s2.238,5,5,5h5c2.762,0,5-2.238,5-5S12.762,40,10,40z M10,20H5c-2.762,0-5,2.238-5,5  s2.238,5,5,5h5c2.762,0,5-2.238,5-5S12.762,20,10,20z M10,0H5C2.238,0,0,2.238,0,5s2.238,5,5,5h5c2.762,0,5-2.238,5-5S12.762,0,10,0  z M30,10h35c2.762,0,5-2.238,5-5s-2.238-5-5-5H30c-2.762,0-5,2.238-5,5S27.238,10,30,10z M65,20H30c-2.762,0-5,2.238-5,5  s2.238,5,5,5h35c2.762,0,5-2.238,5-5S67.762,20,65,20z M65,40H30c-2.762,0-5,2.238-5,5s2.238,5,5,5h35c2.762,0,5-2.238,5-5  S67.762,40,65,40z"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>'></Icon>
@@ -260,7 +240,7 @@ export default function MySections() {
           </Box>
         </InlineStack>
 
-        {/* Listing of Tabs With Search , Filters and Sorting feature */}
+        {/* Listing of Tabs With Search, Filters, and Sorting feature */}
 
         <IndexFilters
           sortOptions={sortOptions}
@@ -278,7 +258,7 @@ export default function MySections() {
           }}
           tabs={tabs}
           selected={selected}
-          onSelect={setSelected}
+          onSelect={handleTabChange}
           filters={filters}
           onClearAll={handleFiltersClearAll}
           mode={mode}
@@ -288,7 +268,7 @@ export default function MySections() {
 
         <BlockStack gap="300">
           <Grid columns={{ sm: 1, md: 2, lg: 3 }} gap="300">
-            {filteredImageGrids.map((gridItem, index) => (
+            {currentItems.map((gridItem, index) => (
               <Card key={index} sectioned>
                 <BlockStack gap="200">
                   <div
@@ -326,6 +306,21 @@ export default function MySections() {
             ))}
           </Grid>
         </BlockStack>
+
+        <div
+          style={{
+            maxWidth: "700px",
+            margin: "auto",
+            border: "1px solid var(--p-color-border)",
+          }}
+        >
+          <Pagination
+            hasPrevious={currentPage > 1}
+            onPrevious={() => setCurrentPage(currentPage - 1)}
+            hasNext={indexOfLastItem < filteredImageGrids.length}
+            onNext={() => setCurrentPage(currentPage + 1)}
+          />
+        </div>
       </BlockStack>
     </Page>
   );

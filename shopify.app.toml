@@ -3,7 +3,7 @@
 client_id = "3447dedcdd8ad33e0061a90a8048bb32"
 name = "LM Theme Sections"
 handle = "lm-theme-sections"
-application_url = "https://continuous-guided-around-effectively.trycloudflare.com"
+application_url = "https://social-medicines-dip-geography.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://continuous-guided-around-effectively.trycloudflare.com/auth/callback",
-  "https://continuous-guided-around-effectively.trycloudflare.com/auth/shopify/callback",
-  "https://continuous-guided-around-effectively.trycloudflare.com/api/auth/callback"
+  "https://social-medicines-dip-geography.trycloudflare.com/auth/callback",
+  "https://social-medicines-dip-geography.trycloudflare.com/auth/shopify/callback",
+  "https://social-medicines-dip-geography.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
