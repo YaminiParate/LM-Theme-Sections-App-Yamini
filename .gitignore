@@ -13,4 +13,8 @@ database.sqlite
 
 .env
 shopify.app.toml
+<<<<<<< HEAD
 shopify.web.toml
+=======
+*.toml
+>>>>>>> 59c18831d14f73a55a18745921256f1713b184f7

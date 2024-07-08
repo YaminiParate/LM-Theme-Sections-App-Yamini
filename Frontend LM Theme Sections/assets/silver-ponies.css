@@ -1,0 +1,25 @@
+/* THIS CSS FOR CHANGE PRICE ON PRODUCT DETAIL PAGE */
+.product .product__info-wrapper .price{
+	color:#ff0000;
+}
+
+/* IF YOU WANT ON SALES PRICE YOU CAN COMMENT OUT BELOW CODE */
+/* .product .product__info-wrapper .price--on-sale .price-item--regular{
+	color:#ff0000;
+} */
+
+/* THIS CSS IS FOR CHANGING THE PRODUCT CARD BORDER ON THE LISTING PAGE */
+.product-grid-container .collection .product-grid .product-card-wrapper {
+     border: 0.0625rem solid red;
+}
+.product-grid-container .collection .product-grid .product-card-wrapper .card__content .card__information {
+    padding: 1.3rem;
+}
+.product-grid-container .collection .card-wrapper .card__inner{
+    transform: none;
+}
+
+/* THIS CSS FOR CLEAR CART ITEAMS BUTTON */
+.cart_clear_items{
+    padding-top: 30px;
+}

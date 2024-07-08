@@ -1,17 +1,29 @@
 import React, { useState, useCallback } from "react";
 import {
   Collapsible,
-  Link,
   Page,
   Box,
   Text,
   Card,
   BlockStack,
-  InlineGrid,
+  Icon,
 } from "@shopify/polaris";
-import { faqItems } from "./data/faqs-data"; // Importing the data
+import { ChevronRightIcon } from "@shopify/polaris-icons";
+import { getAllFAQs } from "../models/FAQs.server";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+
+export const loader = async () => {
+  const faqs = await getAllFAQs();
+  return json(faqs);
+};
 
 const FAQPage = () => {
+  let faqs = useLoaderData();
+
+  console.log("faqs");
+  console.log(faqs);
+
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = useCallback(
@@ -29,23 +41,39 @@ const FAQPage = () => {
           FAQs
         </Text>
         <Text variant="bodyMd" as="p">
-          Bundles lets you buy multiple sections at a discounted price.
+          Still have questions? Reach out to our support at:
+          help@lm.theme.sections
         </Text>
       </Box>
 
       {/* Shows List of FAQs */}
-      {faqItems.map((item, index) => (
-        <Box padding="200">
-          <Card key={index}>
-            <BlockStack gap="300">
-              <InlineGrid columns="1fr auto">
+      {faqs.map((item, index) => (
+        <Box padding="200" key={index}>
+          <Card>
+            <BlockStack
+              gap="300"
+              padding="200"
+              onClick={() => handleToggle(index)}
+            >
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  cursor: "pointer",
+                }}
+              >
                 <Text variant="headingSm" as="h5">
                   {item.question}
                 </Text>
-                <Link onClick={() => handleToggle(index)}>
-                  {openIndex === index ? "Hide" : "Show"}
-                </Link>
-              </InlineGrid>
+                <span
+                  style={{
+                    rotate: openIndex === index && "90deg",
+                    transition: "ease 300ms",
+                  }}
+                >
+                  <Icon source={ChevronRightIcon} />
+                </span>
+              </Box>
             </BlockStack>
             <Collapsible
               open={openIndex === index}
