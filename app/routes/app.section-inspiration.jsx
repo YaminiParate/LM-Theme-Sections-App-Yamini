@@ -27,9 +27,9 @@ export default function AdditionalPage() {
 
   return (
     <Page>
-      <BlockStack gap="500">
+      <Box padding="200">
         {/* Show Page Title */}
-        <InlineStack>
+        <InlineStack blockAlign="center">
           <Box width="50px">
             <Icon
               source={`<?xml version="1.0" ?><svg height="1.04463in" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" viewBox="0 0 1364 1373" width="1.03763in" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css">
@@ -42,7 +42,7 @@ export default function AdditionalPage() {
             </Text>
           </Box>
         </InlineStack>
-      </BlockStack>
+      </Box>
 
       {/* Section Grid View */}
       <BlockStack gap="300">
@@ -55,6 +55,7 @@ export default function AdditionalPage() {
                   source={gridItem.imgSrc}
                   fit="cover"
                   className="grid-image"
+                  width="100%"
                 />
                 <Box background="bg-surface-secondary" padding="100">
                   <Text variant="headingSm" as="h6">
