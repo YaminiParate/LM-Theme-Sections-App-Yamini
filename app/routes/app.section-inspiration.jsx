@@ -55,6 +55,7 @@ export default function AdditionalPage() {
           <Text variant="headingLg" as="h5">
             Section Inspiration
           </Text>
+
         </InlineStack>
       </Box>
 
@@ -69,6 +70,7 @@ export default function AdditionalPage() {
                   source={gridItem.imgSrc}
                   fit="cover"
                   className="grid-image"
+                  width="100%"
                 />
                 <Box background="bg-surface-secondary" padding="100">
                   <Text variant="headingSm" as="h6">
