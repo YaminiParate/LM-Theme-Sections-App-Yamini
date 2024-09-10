@@ -89,10 +89,66 @@
             "link": ""
           }
         },
+        "announcement_XLUXAN": {
+          "type": "announcement",
+          "settings": {
+            "text": "Trusted By 1000+",
+            "link": ""
+          }
+        },
+        "announcement_V4AUVq": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping 👉",
+            "link": ""
+          }
+        },
+        "announcement_Dh9fBb": {
+          "type": "announcement",
+          "settings": {
+            "text": "Easy Returns",
+            "link": ""
+          }
+        },
+        "announcement_wUMHPt": {
+          "type": "announcement",
+          "settings": {
+            "text": "Easy Returns",
+            "link": ""
+          }
+        },
+        "announcement_rHeWKL": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping 👉",
+            "link": ""
+          }
+        },
+        "announcement_Cbhndn": {
+          "type": "announcement",
+          "settings": {
+            "text": "Easy Returns",
+            "link": ""
+          }
+        },
+        "announcement_LyPUnb": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping 👉",
+            "link": ""
+          }
+        },
         "announcement_xeGgED": {
           "type": "announcement",
           "settings": {
             "text": "Trusted By 1000+",
+            "link": ""
+          }
+        },
+        "announcement_rfBe4g": {
+          "type": "announcement",
+          "settings": {
+            "text": "Easy Returns",
             "link": ""
           }
         }
@@ -110,17 +166,27 @@
         "announcement_TiKD7G",
         "announcement_4L8qQV",
         "announcement_3NUJgk",
-        "announcement_xeGgED"
+        "announcement_XLUXAN",
+        "announcement_V4AUVq",
+        "announcement_Dh9fBb",
+        "announcement_wUMHPt",
+        "announcement_rHeWKL",
+        "announcement_Cbhndn",
+        "announcement_LyPUnb",
+        "announcement_xeGgED",
+        "announcement_rfBe4g"
       ],
       "settings": {
         "bg_color": "#000",
         "padding_top": 10,
         "padding_bottom": 10,
+        "m_bottom": 20,
         "font": "open_sans_n4",
         "color": "#ffffff",
         "desktopFontSize": 16,
         "desktopTextTransfer": "none",
-        "animation_duration": 45
+        "scroll_position": "Left",
+        "animation_duration": 30
       }
     },
     "header": {
